@@ -64,8 +64,12 @@ class LinkedList:
             
         else:
             item = self.head
-            while item is not None:
-                item = item.getNext()
+            while item.next is not None:
+                if item.next is None:
+                    break
+                else:
+                    item = item.getNext()
+                
             item.next = new_node
            
         
@@ -80,8 +84,14 @@ class LinkedList:
                 
             while current is not None:
                 previous = current
-                current = current.getNext()
+                if current.getNext() is None:
+                    break
+                else:
+                    current = current.getNext()
             previous.next = None
+            self.tail = previous
+            return self.tail.getValue()
+            
              
 
         
@@ -105,5 +115,8 @@ class Stack:
             
 sean = LinkedList()
 sean.add_toTail('help me')
-sean.add_toTail('try this')
+print(sean.head)
+
+print(sean.tail)
+sean.add_toTail('333')
 print(sean.tail)

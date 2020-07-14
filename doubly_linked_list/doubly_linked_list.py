@@ -33,17 +33,10 @@ class DoublyLinkedList:
             self.head = newNode
             return 
         else:
-            
-            # since the the new node is not empty
-            # i have to select the current head
-            current = self.head
-            # and set its previous to the new node 
-            current.prev = newNode
-            # and then set the new node next to the current  
-            newNode.next = current
-            # and then  set the the head as the new node 
+            newNode.next = self.head
             self.head = newNode
             
+      
         
     """
     Removes the List's current head node, making the
@@ -78,15 +71,15 @@ class DoublyLinkedList:
         # if the current tail is none i will set the the tail the new node
             self.tail = newNode
         else:
-        # else i will make a variable of the current tail
-            currentTail = self.tail
-        # set the current tail next to equal the new node
+            currentTail = self.head
+            while currentTail is not None:
+                if currentTail.next is None:
+                    break
+                else:
+                    currentTail = currentTail.next
             currentTail.next = newNode
-        # then set the newNode previous to equal the current Tail
             newNode.prev = currentTail
-        # then set the the tail to the newNode 
             self.tail = newNode
-        # and finnaly return the tail
             return self.tail
         
             
@@ -148,7 +141,7 @@ myList = DoublyLinkedList()
 myList.add_to_head(11)
 myList.head.next = ListNode(44)
 myList.head.next.prev = myList.head
+
 myList.add_to_tail(33)
-myList.move_to_front(myList.head.next)
 print(myList.head.value)
 print(myList.tail.value)
