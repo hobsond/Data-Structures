@@ -59,38 +59,46 @@ class LinkedList:
     def add_toTail(self,value):
         new_node = Node(value)
         
-        if not self.head:
+        if not self.tail:
             self.head = new_node
+            self.tail = new_node
             
         else:
             item = self.head
-            while item.next is not None:
-                if item.next is None:
-                    break
-                else:
-                    item = item.getNext()
-                
+            while item.next:
+                item = item.next
             item.next = new_node
+            self.tail = new_node
            
         
     def delete_tail(self):
         # first check to see if the list is empty
-        if not self.head:
-            return None
-        else:
-        # if the list is not empty 
-       
-            current = self.head
+        curr = self.head
+        old = curr.next 
+        while curr.next:
+            if curr.next:
+                old = curr.next.value
                 
-            while current is not None:
-                previous = current
-                if current.getNext() is None:
-                    break
-                else:
-                    current = current.getNext()
-            previous.next = None
-            self.tail = previous
-            return self.tail.getValue()
+                break
+            else:
+                
+                curr = curr.next
+        
+        curr.next = None
+        self.tail = curr
+        return old
+            
+            
+            
+    def listPrint(self):
+        curr = self.head
+        while curr is not None:
+            print(curr.getValue())
+            IndexError
+            curr = curr.next
+        print(curr)
+            
+                
             
              
 
@@ -114,9 +122,9 @@ class Stack:
             
             
 sean = LinkedList()
-sean.add_toTail('help me')
-print(sean.head)
-
-print(sean.tail)
-sean.add_toTail('333')
-print(sean.tail)
+sean.add_toTail('33')
+sean.add_toTail('44')
+sean.delete_tail()
+sean.listPrint()
+sean.delete_tail()
+sean.listPrint()
