@@ -51,7 +51,14 @@ class LinkedList:
         self.tail = curr
         return old
             
-            
+    def delete_head(self):
+        if self.head is None:
+            return
+        curr = self.head
+        newNext = curr.next
+        self.head = newNext
+        curr.next = None
+        
             
     def listPrint(self):
         curr = self.head
@@ -59,7 +66,11 @@ class LinkedList:
             print(curr.getValue())
             IndexError
             curr = curr.next
-        print(curr)
+        
             
-                
-       
+
+jj= LinkedList()
+jj.add_toTail(33)
+jj.add_toTail(30)
+jj.delete_head()
+jj.listPrint()
