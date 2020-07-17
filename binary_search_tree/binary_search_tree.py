@@ -49,30 +49,25 @@ class BSTNode:
          # PLAN #
         # if node is none return False BASE CASE
         if not self.value:
-            return True
+            return False
         # if node.value == findvalue: return True
         if self.value == target:
-            return False
+            return True
         else:
             if target < self.value:
                 if self.left:
-                    return self.left.contains()
+                    return self.left.contains(target)
+                    
+            if target > self.value:
                 if self.right:
-                    return self.right.contains()
+                    return self.right.contains(target)
             return False
         # else:
         # if find < node.value:
         # if node.left then find on left node:
         # else:
         # if node.right: find on right node
-       
-    # def _find(self,data,curr_node):
-    #     if data >curr_node.value and curr_node.right:
-    #         return self._find(data,curr_node.right)
-    #     elif data < curr_node.value and curr_node.left:
-    #         return self._find(data,curr_node.left)
-    #     if data == curr_node.value:
-    #         return True
+    
         
 
     # Return the maximum value found in the tree
@@ -125,6 +120,19 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
+        # take in the given node 
+        # if the node has a value print the value
+        # if the node has a left
+        
+        if node.left:
+            node.left.bft_print()
+            # if left
+             # pass the recurssive function on the node left
+            # else  you print the node value
+        
+        # if the node has a right 
+        # 
+        
         pass
 
     # Print the value of every node, starting with the given node,
